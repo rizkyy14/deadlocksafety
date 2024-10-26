@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3f3e0;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.presentation {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.progress {
+  height: 100%;
+  background-color: #133e87;
+  transition: width 0.3s ease;
+}
+
+.slide-container {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0; /* Important for Firefox */
+  background: url(kertas.jpg);
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-content {
+  padding: 1.25rem;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #dbd3d3 #f3f4f6;
+}
+
+.slide-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.slide-content::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.slide-content::-webkit-scrollbar-thumb {
+  background-color: #2563eb;
+  border-radius: 20px;
+  border: 2px solid #f3f4f6;
+}
+
+@media (min-width: 768px) {
+  .slide-content {
+    padding: 2rem;
+  }
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide.prev {
+  transform: translateX(-100%);
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f9fafb;
+  flex-shrink: 0;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+  background-color: #1d4ed8;
+}
+
+.title-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+
+ul {
+  margin-left: 1.5rem;
+  font-weight: 300;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-weight: 300;
+}
+
+small {
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+#slideCount {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  .navigation {
+    padding: 0.75rem;
+  }
+
+  #slideCount {
+    font-size: 0.75rem;
+  }
+}

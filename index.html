@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deadlock & Algoritma Safety</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="presentation">
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="slide-container" id="slideContainer">
+          <!-- Slide 1 -->
+          <div class="slide active" id="slide-1">
+            <div class="slide-content">
+              <div class="title-slide">
+                <h1>Deadlock dan Algoritma Safety</h1>
+                <h2>Memahami "Kemacetan" dalam Sistem Komputer</h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="slide" id="slide-2">
+            <div class="slide-content">
+              <h2>Apa itu Deadlock? 🤔</h2>
+              <div class="grid">
+                <div class="card">
+                  <h3>Definisi</h3>
+                  <p>Bayangkan situasi ini: Ada dua mobil yang bertemu di jalan sempit. Keduanya tidak bisa maju karena saling menghalangi, dan tidak bisa mundur karena ada mobil lain di belakang.</p>
+                </div>
+                <div class="card">
+                  <h3>Dalam Dunia Komputer</h3>
+                  <ul>
+                    <li>Deadlock terjadi ketika program-program saling menunggu sumber daya</li>
+                    <li>Mirip seperti "kemacetan total" di persimpangan jalan</li>
+                    <li>Bisa membuat komputer kita "macet" atau tidak responsif</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card" style="margin-top: 1rem">
+                <h3>Contoh Sehari-hari 🚗</h3>
+                <ul>
+                  <li>Dua orang saling menunggu di pintu: "Silakan Anda duluan!" "Tidak, Anda saja!"</li>
+                  <li>Kemacetan di perempatan ketika semua mobil memaksa maju</li>
+                  <li>Dua orang berebut menggunakan printer di kantor</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="slide" id="slide-3">
+            <div class="slide-content">
+              <h2>4 "Biang Kerok" Deadlock 🤷</h2>
+              <div class="grid">
+                <div class="card">
+                  <h3>Circular Wait</h3>
+                  <p>Saling tunggu melingkar</p>
+                  <small>Seperti mobil A menunggu B, B menunggu C, C menunggu A</small>
+                </div>
+                <div class="card">
+                  <h3>Hold and Wait</h3>
+                  <p>Pelit melepas sumber daya</p>
+                  <small>Ibarat orang yang tidak mau melepas mouse sambil menunggu keyboard</small>
+                </div>
+                <div class="card">
+                  <h3>No Preemption</h3>
+                  <p>Tidak bisa "menyerobot"</p>
+                  <small>Seperti tidak bisa mengambil paksa printer yang sedang dipakai</small>
+                </div>
+                <div class="card">
+                  <h3>Mutual Exclusion</h3>
+                  <p>Sumber daya eksklusif</p>
+                  <small>Printer hanya bisa dipakai satu orang pada satu waktu</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="slide" id="slide-4">
+            <div class="slide-content">
+              <h2>Algoritma Safety: Sang Penyelamat! 🦸‍♂️</h2>
+              <div class="card">
+                <h3>Bayangkan seperti polisi lalu lintas pintar yang:</h3>
+                <ul>
+                  <li>Mengatur "jalur" aman untuk setiap program</li>
+                  <li>Memastikan tidak ada yang terjebak deadlock</li>
+                  <li>Mengoptimalkan penggunaan sumber daya</li>
+                </ul>
+              </div>
+              <div class="grid" style="margin-top: 1rem">
+                <div class="card">
+                  <h3>Cara Kerja 🔄</h3>
+                  <ul>
+                    <li><strong>Tahap Checking:</strong> Memeriksa sumber daya yang tersedia</li>
+                    <li><strong>Tahap Pengaturan:</strong> Menentukan urutan aman program berjalan</li>
+                    <li><strong>Tahap Monitoring:</strong> Memantau penggunaan sumber daya</li>
+                  </ul>
+                </div>
+                <div class="card">
+                  <h3>Tips Menghindari Deadlock 💡</h3>
+                  <ul>
+                    <li>Gunakan sumber daya secukupnya</li>
+                    <li>Lepaskan sumber daya yang sudah tidak dipakai</li>
+                    <li>Tentukan prioritas penggunaan</li>
+                    <li>Terapkan sistem antrian yang baik</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="slide" id="slide-5">
+            <div class="slide-content">
+              <h2>State Aman vs Tidak Aman 🚦</h2>
+              <div class="grid">
+                <div class="card" style="border-top: 4px solid #22c55e">
+                  <h3 style="color: #15803d">State Aman ✅</h3>
+                  <ul>
+                    <li>Semua program bisa selesai dengan lancar</li>
+                    <li>Seperti lalu lintas yang mengalir teratur</li>
+                    <li>Contoh: Antrian di bank yang tertib</li>
+                  </ul>
+                </div>
+                <div class="card" style="border-top: 4px solid #ef4444">
+                  <h3 style="color: #b91c1c">State Tidak Aman ❌</h3>
+                  <ul>
+                    <li>Berpotensi terjadi deadlock</li>
+                    <li>Seperti jalanan yang semrawut</li>
+                    <li>Contoh: Semua mobil memaksa masuk ke jalan sempit</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card" style="margin-top: 1rem">
+                <h3>Diskusi 💭</h3>
+                <ul>
+                  <li>Pernahkah kalian mengalami deadlock dalam kehidupan sehari-hari?</li>
+                  <li>Bagaimana cara kalian mengatasinya?</li>
+                  <li>Apa yang bisa kita pelajari dari konsep deadlock ini?</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="navigation">
+          <button onclick="prevSlide()" id="prevBtn" disabled>◀ Previous</button>
+          <div id="slideCount">Slide 1 of 5</div>
+          <button onclick="nextSlide()" id="nextBtn">Next ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 1;
+      const totalSlides = 5;
+      let isAnimating = false;
+
+      function updateSlideCount() {
+        document.getElementById('slideCount').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+      }
+
+      function updateProgress() {
+        const progress = (currentSlide / totalSlides) * 100;
+        document.getElementById('progress').style.width = `${progress}%`;
+      }
+
+      function updateButtons() {
+        document.getElementById('prevBtn').disabled = currentSlide === 1;
+        document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+      }
+
+      function updateSlides(direction) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const currentSlideElem = document.getElementById(`slide-${currentSlide}`);
+        const nextSlideNum = direction === 'next' ? currentSlide + 1 : currentSlide - 1;
+        const nextSlideElem = document.getElementById(`slide-${nextSlideNum}`);
+
+        if (!nextSlideElem) {
+          isAnimating = false;
+          return;
+        }
+
+        nextSlideElem.style.transform = `translateX(${direction === 'next' ? '100%' : '-100%'})`;
+        nextSlideElem.style.display = 'block';
+
+        void nextSlideElem.offsetWidth;
+
+        currentSlideElem.style.transform = `translateX(${direction === 'next' ? '-100%' : '100%'})`;
+        currentSlideElem.style.opacity = '0';
+
+        nextSlideElem.style.transform = 'translateX(0)';
+        nextSlideElem.style.opacity = '1';
+
+        setTimeout(() => {
+          currentSlideElem.classList.remove('active');
+          nextSlideElem.classList.add('active');
+          isAnimating = false;
+        }, 500);
+
+        currentSlide = nextSlideNum;
+        updateProgress();
+        updateSlideCount();
+        updateButtons();
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides) {
+          updateSlides('next');
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 1) {
+          updateSlides('prev');
+        }
+      }
+
+      // Touch events untuk swipe pada mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      document.querySelector('.slide-container').addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+
+      document.querySelector('.slide-container').addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        const swipeThreshold = 50; // Minimal jarak swipe
+        const swipeLength = touchEndX - touchStartX;
+
+        if (Math.abs(swipeLength) > swipeThreshold) {
+          if (swipeLength > 0) {
+            prevSlide(); // Swipe kanan
+          } else {
+            nextSlide(); // Swipe kiri
+          }
+        }
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        }
+      });
+
+      // Initialize
+      updateProgress();
+      updateSlideCount();
+      updateButtons();
+
+      // Resize handler untuk responsivitas
+      window.addEventListener('resize', () => {
+        const currentSlideElem = document.getElementById(`slide-${currentSlide}`);
+        if (currentSlideElem) {
+          currentSlideElem.style.transform = 'translateX(0)';
+        }
+      });
+    </script>
+  </body>
+</html>
