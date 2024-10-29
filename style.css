@@ -83,6 +83,11 @@ body {
   border: 2px solid #f3f4f6;
 }
 
+.copy {
+  padding-top: 1rem;
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .slide-content {
     padding: 2rem;
